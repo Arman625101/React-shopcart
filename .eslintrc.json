@@ -1,0 +1,23 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "no-console": "warn",
+    "react/prop-types": 0,
+    "linebreak-style": ["error", "unix"],
+    "react/react-in-jsx-scope": 0,
+    "react/jsx-uses-react": 0,
+    "no-unused-vars": "warn"
+  }
+}

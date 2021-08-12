@@ -1,0 +1,18 @@
+nav {
+  background-color: rgb(243, 243, 243);
+  div.main-width {
+    display: flex;
+
+    a {
+      padding: 10px 15px;
+      border-bottom: 2px solid #ccc;
+      font-size: 15px;
+      font-weight: 400;
+      transition: all 0.2s;
+      &.active {
+        border-bottom: 2px solid #000;
+        transition: all 0.2s;
+      }
+    }
+  }
+}
