@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require("dotenv-webpack");
 
 module.exports = {
+  entry: ["regenerator-runtime/runtime.js", "./src/index.js"],
   output: {
     path: path.join(__dirname, "/dist"),
     filename: "index.bundle.js",
@@ -13,6 +14,7 @@ module.exports = {
       errors: true,
     },
     port: 3010,
+    hot: true,
     watchContentBase: true,
     historyApiFallback: true,
   },
@@ -26,17 +28,18 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|sass|css)$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
     ],
   },
-  target: "node",
+  target: "web",
   plugins: [
     new MiniCssExtractPlugin(),
     new Dotenv({
       path: "./.env.local",
-      safe: true,
+      safe: false,
     }),
   ],
+  devtool: "source-map",
 };
