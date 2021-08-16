@@ -11,3 +11,10 @@ export const fetchProducts = () =>
       }));
       return products;
     });
+
+export const fetchProductById = (id) => 
+  db
+    .collection("products")
+    .doc(id)
+    .get()
+    .then((snapshot) => snapshot.data());
