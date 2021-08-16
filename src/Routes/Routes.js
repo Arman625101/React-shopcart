@@ -21,9 +21,7 @@ const Routes = () => {
         <Route path="/myproducts">
           <MyProducts />
         </Route>
-        <PrivateRoute path="/profile">
-          <Profile />
-        </PrivateRoute>
+        <PrivateRoute path="/profile" comp={Profile} />
         {!currentUser && (
           <>
             <Route path="/login">

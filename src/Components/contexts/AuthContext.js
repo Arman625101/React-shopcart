@@ -23,6 +23,10 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
+  const getUserProfile = (id) => {
+    return db.collection('profile')
+  }
+
   const signup = async ({ email, password, username, avatar }) => {
     const res = await auth.createUserWithEmailAndPassword(email, password);
     const { user } = res;

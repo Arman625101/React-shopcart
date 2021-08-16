@@ -16,6 +16,7 @@ const Profile = () => {
 
   return (
     <div className="profile">
+      <h2>{currentUser && currentUser.username}</h2>
       <h1>{currentUser && currentUser.email}</h1>
       <button onClick={handleLogout}>Log out</button>
     </div>

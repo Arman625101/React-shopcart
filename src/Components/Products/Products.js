@@ -1,12 +1,22 @@
 import "./Products.scss";
 import useFetch from "../../hooks/useFetch";
+import { fetchProducts } from "../../api/api";
+import { useEffect, useState } from "react";
 
 const Products = () => {
-  const { data: products, loading, error } = useFetch("/products");
+  const [products, setProducts] = useState();
+  useEffect(() => {
+    fetchProducts().then((res) => {
+      setProducts(res);
+    });
+    return () => {
+      products;
+    };
+  }, []);
 
   return (
     <div className="products">
-      {loading && <p>{loading}</p>}
+      {/* {loading && <p>{loading}</p>} */}
       {products && (
         <ul>
           {products.map((prod) => (
@@ -21,7 +31,7 @@ const Products = () => {
           ))}
         </ul>
       )}
-      {error && <p>{error}</p>}
+      {/* {error && <p>{error}</p>} */}
     </div>
   );
 };
