@@ -16,10 +16,16 @@ const ProductDetails = () => {
     }, [])
 
     return (
-        <div className="details">
-            <p>{product && product.name}</p>
-            <p>{product && product.description}</p>
-        </div>
+        <>
+        {product && (
+            <div className="details">
+                <img src={product.image} />
+                <p className="price">{product.price}</p>
+                <p className="name">{product.name}</p>
+                <p className="descr">{product.description}</p>
+            </div>
+        )}
+        </>
     )
 }
  
