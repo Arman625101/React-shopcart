@@ -9,7 +9,7 @@ import { useAuth } from "../Components/contexts/AuthContext";
 import ProductDetails from "../Components/ProductDetails/ProductDetails";
 
 const Routes = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, profile } = useAuth();
   return (
     <div className="main-width">
       <Switch>

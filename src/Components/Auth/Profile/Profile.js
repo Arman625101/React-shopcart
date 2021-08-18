@@ -1,8 +1,9 @@
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import "./Profile.scss";
 
 const Profile = () => {
-  const { currentUser, logout } = useAuth();
+  const { currentUser, profile, logout } = useAuth();
   const history = useHistory();
   const handleLogout = () => {
     // setError("");
@@ -15,11 +16,22 @@ const Profile = () => {
   };
 
   return (
-    <div className="profile">
-      <h2>{currentUser && currentUser.username}</h2>
-      <h1>{currentUser && currentUser.email}</h1>
-      <button onClick={handleLogout}>Log out</button>
-    </div>
+    <>
+      {profile && currentUser && (
+        <div className="profile">
+          <div className="avatar">
+            <img src={profile.avatar} alt={profile.username} />
+          </div>
+          <div className="info">
+            <p className="username">{profile.username}</p>
+            <p className="email">{currentUser.email}</p>
+            <button className="logout" onClick={handleLogout}>
+              Log out
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import db from "../db/firebase";
+import db, { fieldPath } from "../db/firebase";
 
 export const fetchProducts = () =>
   db
@@ -12,9 +12,24 @@ export const fetchProducts = () =>
       return products;
     });
 
-export const fetchProductById = (id) => 
+export const fetchProductById = (id) =>
   db
     .collection("products")
     .doc(id)
     .get()
     .then((snapshot) => snapshot.data());
+
+export const fetchUserById = (id) =>
+  db
+    .collection("profile")
+    .doc(id)
+    .get()
+    .then((snapshot) => snapshot.data());
+
+export const fetchUserProducts = (id) => {
+  console.log(id);
+  db.collection("products")
+    .where(fieldPath("seller", "id"), "==", id)
+    .get()
+    .then((snapshot) => snapshot.data());
+};

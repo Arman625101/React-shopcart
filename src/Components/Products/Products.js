@@ -6,7 +6,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 
 const Products = () => {
   const [products, setProducts] = useState();
-  const {path, url} = useRouteMatch()
+  const { path, url } = useRouteMatch();
   useEffect(() => {
     fetchProducts().then((res) => {
       setProducts(res);
@@ -22,7 +22,7 @@ const Products = () => {
       {products && (
         <ul>
           {products.map((prod) => (
-            <li key={prod.id} >
+            <li key={prod.id}>
               <Link to={`${url}/${prod.id}`}>
                 <img src={prod.image} alt={prod.name} />
                 <div className="content">

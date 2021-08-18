@@ -1,0 +1,61 @@
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  .avatar {
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    word-break: break-all;
+    font-weight: 400;
+    padding: 15px;
+    p {
+      font-size: 16px;
+      &.username {
+        font-size: 20px;
+      }
+      &.email {
+        font-size: 15px;
+        margin-bottom: 15px;
+      }
+    }
+    .logout {
+      cursor: pointer;
+      background-image: linear-gradient(
+        to right,
+        #d31027 0%,
+        #ea384d 51%,
+        #d31027 100%
+      );
+      text-align: center;
+      text-transform: uppercase;
+      transition: 0.5s;
+      background-size: 200% auto;
+      color: white;
+      box-shadow: 0 0 20px #eee;
+      display: block;
+      border: none;
+      width: 120px;
+      font-weight: 100;
+      padding: 8px 0;
+      &:hover {
+        background-position: right center; /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+}
