@@ -17,9 +17,6 @@ function App() {
 export default App;
 
 
-<<<<<<< HEAD
 
 TEST 2222
-=======
 TEEEEST
->>>>>>> dev
