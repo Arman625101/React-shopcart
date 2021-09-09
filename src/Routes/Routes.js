@@ -5,7 +5,7 @@ import Register from "../Components/Auth/Register/Register";
 import MyProducts from "../Components/MyProducts/MyProducts";
 import Products from "../Components/Products/Products";
 import PrivateRoute from "./PrivateRoute";
-import { useAuth } from "../Components/contexts/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import ProductDetails from "../Components/ProductDetails/ProductDetails";
 
 const Routes = () => {
@@ -16,26 +16,18 @@ const Routes = () => {
         <Route exact path="/">
           <Redirect to="/products" />
         </Route>
-        <Route exact path="/products">
-          <Products />
-        </Route>
+        <Route exact path="/products" component={Products} />
         <Route exact path="/products/:id" component={ProductDetails} />
-        <Route path="/myproducts">
-          <MyProducts />
-        </Route>
+        <PrivateRoute path="/myproducts" comp={MyProducts} />
         <PrivateRoute path="/profile" comp={Profile} />
         {!currentUser && (
           <>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/register">
-              <Register />
-            </Route>
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
           </>
         )}
         <Route path="*">
-          <Redirect to="/products"></Redirect>
+          <Redirect to="/products" />
         </Route>
       </Switch>
     </div>

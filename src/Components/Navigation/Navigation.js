@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./Navigation.scss";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 const Navigation = () => {
   const { currentUser } = useAuth();

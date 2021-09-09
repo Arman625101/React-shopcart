@@ -1,14 +1,14 @@
 import { useHistory } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
+import { authAPI } from "../../../api";
+import { useAuth } from "../../../context/AuthContext";
 import "./Profile.scss";
 
 const Profile = () => {
-  const { currentUser, profile, logout } = useAuth();
+  const { currentUser, profile } = useAuth();
   const history = useHistory();
-  const handleLogout = () => {
-    // setError("");
+  const handleLogout = async () => {
     try {
-      logout();
+      await authAPI.logout();
       history.push("/products");
     } catch {
       // setError("Failed to log out");

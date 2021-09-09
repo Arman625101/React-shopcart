@@ -1,13 +1,13 @@
-import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../contexts/AuthContext";
-import { Link } from "react-router-dom";
+import { useAuth } from "../../../context/AuthContext";
+import { Link, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { authAPI } from "../../../api";
 
 import "../Auth.scss";
 
 const Register = () => {
-  const { signup, currentUser } = useAuth();
+  const history = useHistory();
   const {
     register,
     formState: { errors },
@@ -18,12 +18,14 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     try {
-      await signup({
+      await authAPI.signup({
         email: data.email,
         password: data.password,
         username: data.username,
         avatar: "fqfqxxxxx",
       });
+
+      history.push("/products");
     } catch {
       toast.error("Failed to create an account");
     }

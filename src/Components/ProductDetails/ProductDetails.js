@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchProductById, fetchUserById } from "../../api/api";
+import { productAPI } from "../../api";
 import "./ProductDetails.scss";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState();
-  const [prodUser, setProdUser] = useState();
 
   const { id } = useParams();
   useEffect(() => {
-    fetchProductById(id).then((res) => {
+    productAPI.getProductById(id).then((res) => {
       setProduct(res);
-      fetchUserById(res.seller.id).then((user) => setProdUser(user));
     });
 
     return () => product;
@@ -19,7 +17,7 @@ const ProductDetails = () => {
 
   return (
     <>
-      {product && prodUser && (
+      {product && (
         <div className="details">
           <div className="product">
             <div className="image">
@@ -38,9 +36,9 @@ const ProductDetails = () => {
           </div>
           <div className="seller">
             <div className="info">
-              <img src={prodUser.avatar} alt={prodUser.username} />
-              <p className="username">{prodUser.username}</p>
-              <p className="email">{prodUser.email}</p>
+              <img src={product.seller.avatar} alt={product.seller.name} />
+              <p className="username">{product.seller.username}</p>
+              <p className="email">{product.seller.email}</p>
               <p></p>
             </div>
           </div>

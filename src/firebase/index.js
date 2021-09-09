@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import firebase from "firebase/app";
-import "firebase/firestore";
 import "firebase/auth";
+import "firebase/firestore";
 
 const db = firebase.initializeApp({
   apiKey: process.env.API_KEY,
@@ -12,9 +12,7 @@ const db = firebase.initializeApp({
   appId: process.env.APP_ID,
 });
 
-export const auth = db.auth();
-export default db.firestore();
-export const fieldPath = firebase.firestore.FieldPath;
-
-const { Timestamp } = firebase.firestore;
-export { Timestamp };
+export const Firebase = {
+  auth: db.auth(),
+  firestore: db.firestore(),
+};

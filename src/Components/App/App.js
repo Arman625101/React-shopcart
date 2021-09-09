@@ -1,7 +1,7 @@
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "../../Routes/Routes";
 import Navigation from "../Navigation/Navigation";
-import { AuthProvider } from "../contexts/AuthContext";
+import { AuthProvider } from "../../context/AuthContext";
 
 function App() {
   return (

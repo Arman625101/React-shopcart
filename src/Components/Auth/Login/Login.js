@@ -1,12 +1,11 @@
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import "../Auth.scss";
 import { ToastContainer, toast } from "react-toastify";
+import { authAPI } from "../../../api";
+import "../Auth.scss";
 
 const Login = () => {
   const history = useHistory();
-  const { login } = useAuth();
   const {
     register,
     formState: { errors },
@@ -15,7 +14,7 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      await login(data.email, data.password);
+      await authAPI.login(data.email, data.password);
       history.push("/products");
     } catch {
       toast.error("Failed to Log In");

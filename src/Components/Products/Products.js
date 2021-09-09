@@ -1,6 +1,5 @@
 import "./Products.scss";
-import useFetch from "../../hooks/useFetch";
-import { fetchProducts } from "../../api/api";
+import { productAPI } from "../../api";
 import { useEffect, useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 
@@ -8,9 +7,8 @@ const Products = () => {
   const [products, setProducts] = useState();
   const { path, url } = useRouteMatch();
   useEffect(() => {
-    fetchProducts().then((res) => {
-      setProducts(res);
-    });
+    productAPI.getProducts().then((res) => setProducts(res));
+
     return () => {
       products;
     };
