@@ -3,7 +3,7 @@ import { useAuth } from "../../../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { authAPI } from "../../../api";
-
+import { SignUpFormValues } from "../../../types/global";
 import "../Auth.scss";
 
 const Register = () => {
@@ -16,7 +16,7 @@ const Register = () => {
   } = useForm();
   const password = watch("password", "");
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: SignUpFormValues) => {
     try {
       await authAPI.signup({
         email: data.email,
@@ -47,7 +47,7 @@ const Register = () => {
             required: "You must specify a username",
             pattern: {
               value:
-                "^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){1,18}[a-zA-Z0-9]$",
+                /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){1,18}[a-zA-Z0-9]$/,
               message: "Username is not Vaild Ex. Arman01",
             },
           })}

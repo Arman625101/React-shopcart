@@ -4,6 +4,11 @@ import { ToastContainer, toast } from "react-toastify";
 import { authAPI } from "../../../api";
 import "../Auth.scss";
 
+interface FormData {
+  email: string;
+  password: string;
+}
+
 const Login = () => {
   const history = useHistory();
   const {
@@ -12,7 +17,7 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: FormData) => {
     try {
       await authAPI.login(data.email, data.password);
       history.push("/products");

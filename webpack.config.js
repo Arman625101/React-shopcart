@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require("dotenv-webpack");
@@ -7,7 +8,6 @@ module.exports = {
   output: {
     path: path.join(__dirname, "/dist"),
     filename: "index.bundle.js",
-    publicPath: "/",
   },
   devServer: {
     overlay: {
@@ -28,6 +28,13 @@ module.exports = {
         },
       },
       {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "ts-loader",
+        },
+      },
+      {
         test: /\.(scss|sass|css)$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
@@ -42,4 +49,7 @@ module.exports = {
     }),
   ],
   devtool: "source-map",
+  resolve: {
+    extensions: [".ts", ".js", ".tsx"],
+  },
 };

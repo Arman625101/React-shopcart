@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 const url = "http://localhost:3000";
 
-const useFetch = (path) => {
+const useFetch = (path: string) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const source = axios.CancelToken.source();
 
   useEffect(() => {
-    setLoading("Loading...");
+    setLoading(true);
     setData(null);
     setError(null);
     if (path === "/") {

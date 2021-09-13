@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { productAPI } from "../../api";
+import { Product } from "../../types/global";
 import "./ProductDetails.scss";
 
-const ProductDetails = () => {
-  const [product, setProduct] = useState();
+type Param = {
+  id: string;
+};
 
-  const { id } = useParams();
+const ProductDetails = () => {
+  const [product, setProduct] = useState<Product>();
+
+  const { id } = useParams<Param>();
   useEffect(() => {
     productAPI.getProductById(id).then((res) => {
       setProduct(res);
     });
 
-    return () => product;
+    return () => {
+      product;
+    };
   }, []);
 
   return (
@@ -36,9 +43,12 @@ const ProductDetails = () => {
           </div>
           <div className="seller">
             <div className="info">
-              <img src={product.seller.avatar} alt={product.seller.name} />
-              <p className="username">{product.seller.username}</p>
-              <p className="email">{product.seller.email}</p>
+              <img
+                src={product.seller?.avatar}
+                alt={product.seller?.username}
+              />
+              <p className="username">{product.seller?.username}</p>
+              <p className="email">{product.seller?.email}</p>
               <p></p>
             </div>
           </div>
